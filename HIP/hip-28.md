@@ -16,7 +16,7 @@ note: dNFTs will form a separate HIP at a generic level, but were initially desi
 
 ## Motivation
 
-There are not enough verified carbon credits globally to meet demand. In turn, corporates are overpaying for carbon credits to meet ESG targets. In addition current carbon credit systems are not fit for purpose due to a number of issues including accountability, leakage, and additionally.
+There are not enough verified carbon credits globally to meet demand. In turn, corporates are overpaying for carbon credits to meet ESG targets. In addition current carbon credit systems are not fit for purpose due to a number of issues including accountability, leakage, and additionality.
 
 There are generally two types of carbon credits: 
 * emission allowances and 
