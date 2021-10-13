@@ -1,6 +1,6 @@
 - hip: 28
 - title: Guardian Type Solution
-- author(s): Matthew Smithies <matt.s@dovu.io>, Wes Geisenberger <wes@hbar.fund>, Serg Metelin <sergey.metelin@hedera.com>, Ken Anderson <ken@hedera.com>, and Daniel Norkin <daniel.norkin@envisionblockchain.com>
+- author(s): Matthew Smithies <matt.s@dovu.io>, Wes Geisenberger <wes.geisenberger@hedera.com>, Serg Metelin <sergey.metelin@hedera.com>, Ken Anderson <ken@hedera.com>, and Daniel Norkin <daniel.norkin@envisionblockchain.com>
 - type: Standards Track
 - category: Application
 - status: Draft
@@ -10,17 +10,27 @@
 
 ## Abstract
 
-The Guardian is a modular open-source solution that includes best-in-class identity management and decentralized ledger technology (DLT) libraries. At the heart of the Guardian is a Policy Workflow Engine (PWE) that enables applications to offer linked audit trails for tokenization use cases. 
+The Guardian is a modular open-source solution that includes best-in-class identity management and decentralized ledger technology (DLT) libraries. At the heart of the Guardian solution is a sophisticated Policy Workflow Engine (PWE) that enables the ability for applications to offer a requirements-based tokenization implementation.
 
 This document formally specifies the Guardian with a specification on the Policy Workflow Engine.
 
 ## Motivation
 
-To incentivize good environmental stewardship, regulatory bodies have defined standards and business requirements to incentivize organizations to adopt Carbon Credits, Carbon Offsets, and other complimentary ESG/UN SDG Assets. These very specific standards and business requirements offer a good way to demonstrate how a PWE becomes a business-critical component for a requirements-based, trusted tokenization service.
+To incentivize good environmental stewardship, regulatory bodies have defined standards and business requirements to incentivize organizations to adopt Carbon Credits. These very specific standards and business requirements offer a good way to demonstrate how a PWE becomes a business-critical component for a requirements-based, trusted tokenization service.
 
-There are generally two types of carbon credits: 
-* emission allowances and 
-* carbon offsets. 
+## Rationale
+
+With regards to ecological markets, business leaders will find themselves in these four phases:
+
+* Creating Verified Supply
+* Establishing Demand
+* Buying & Selling
+* Offsetting
+
+There are many rationales that can be applied here such as Greenhouse Gas Emission Profiles and Renewalable Energy Credits. For purposes of this rationale we will focus on two types of carbon credits:
+
+* emission allowances and
+* carbon offsets.
 
 While emission allowances are subject to government regulation, a carbon offset is an intangible asset that is created in a process involving a project or program whose activity can be claimed to reduce or remove carbon as a result, that is independently verified and turned into a carbon offset. These offsets are minted, or issued, by an environmental registry that created the standard methodology or protocol used to create the verified carbon offset claim. The offset then represents the original owner’s property right claim to the carbon-related benefits. The asset owner(s) can then sell their credits directly to buyers, or at wholesale. The ultimate end-user has the right to claim the benefits, and has the ability to retire the credit permanently – usually as part of a netting process, where the claimed CO2 benefits are subtracted from that end-user’s other Greenhouse Gas (GHG) emissions.
 
@@ -29,7 +39,7 @@ The process to create a carbon offset claim that can be validated and verified t
 * Lack of assurance
 * Potential double counting
 * Greenwashing
-* Overall lack of trust. 
+* Overall lack of trust.
 
 This is where a Guardian type solution that leverages a PWE, is a sensible approach to ameliorate the issue with the current processes. The dynamic PWE can mirror the standards and business requirements of regulatory bodies. In particular, the Guardian solution offers carbon markets the ability to operate in a fully auditable ecosystem by including:
 * W3C Decentralized Identifiers (DIDs)
@@ -40,7 +50,7 @@ This is where a Guardian type solution that leverages a PWE, is a sensible appro
 
 ## Rationale
 
-Organizations like DOVU, who is building a soil carbon sequestration application, believe offset projects should include incentivization structures by default including a layer of accountability so that the carbon capture abilities are optimized. If correct processes in agricultural for DOVU's use case aren't followed this can trigger a negative effect of carbon stores. 
+Organizations like DOVU, who is building a soil carbon sequestration application, believe offset projects should include incentivization structures by default including a layer of accountability so that the carbon capture abilities are optimized. If correct processes in agricultural for DOVU's use case aren't followed this can trigger a negative effect of carbon stores.
 
 Furthermore, as soil has an estimated maximum storage capacity for carbon capacity through [regenerative agriculture](https://en.wikipedia.org/wiki/Regenerative_agriculture) however there should be an ongoing maintaince period, tied to incentives, which extends beyond the scope of a contract to ensure that soil carbon isn't depleted and trigger durability issues outside a contract.       
 
@@ -55,7 +65,13 @@ To avoid the negative effects there are a number of elements that are required:
 
 These elements listed above would require a dynamic Policy Workflow Engine.
 
-Listed above is just one rationale, however, a similar workflow will be required to fulfill various use cases / polices. 
+Listed above is just one rationale, however, a similar workflow will be required to fulfill various use cases / polices.
+
+* Decentralized ledger technologies.
+* Policy workflow engines through fully configurable and human readable “logic blocks” accessible through either a user interface or an application programming interface (API).
+
+Like mentioned at the beginning of this section, similar logic can be easily applied to other rationales.
+
 
 ## User stories
 
@@ -77,14 +93,14 @@ This leads to the following specifications:
 * Any unique identifier utilized in a GTS must be resolvable to its associated public keys used for cryptographic authentication of the unique identifier.
 * Any unique identifier utilized in a GTS must follow the W3C DID Core specification [[W3C DID](https://www.w3.org/TR/did-core/)].
 
-Per W3C: 
+Per W3C:
 > Decentralized identifiers (DIDs) are a new type of identifier that enables verifiable, decentralized digital identity. A DID refers to any subject (e.g., a person, organization, thing, data model, abstract entity, etc.) as determined by the controller of the DID. In contrast to typical, federated identifiers, DIDs have been designed so that they may be decoupled from centralized registries, identity providers, and certificate authorities. Specifically, while other parties might be used to help enable the discovery of information related to a DID, the design enables the controller of a DID to prove control over it without requiring permission from any other party. DIDs are URIs that associate a DID subject with a DID document allowing trustable interactions associated with that subject.
-> 
+>
 > Each DID document can express cryptographic material, verification methods, or services, which provide a set of mechanisms enabling a DID controller to prove control of the DID. Services enable trusted interactions associated with the DID subject. A DID might provide the means to return the DID subject itself, if the DID subject is an information resource such as a data model."
-> 
+>
 > This document specifies the DID syntax, a common data model, core properties, serialized representations, DID operations, and an explanation of the process of resolving DIDs to the resources that they represent.```
 
-### W3C Verifiable Credential 
+### W3C Verifiable Credential
 
 Entity identities and credentials, such as carbon offset claims, are established outside of the context, and, therefore, the scope of a GTS. Hence, it is required that GTS participants -- Requesters, Providers, and, if distinct, GTS Operators -- to establish the trust context of acceptable identities and credentials for a GTS, and for a given Policy Context. This statement also applies to a network of GTSs which are to interoperate with one another.
 
@@ -95,14 +111,14 @@ We follow the definition of a [W3C Verifiable Credential](https://www.w3.org/TR/
 
 The following specifications are made for credentials utilized within the context of one or more GTSs and a specific Policy context:
 
-* A unique identifier utilized within a GTS should be linked to an (Legal) Entity accepted by GTS participants and within the context of a Policy to be applied. 
+* A unique identifier utilized within a GTS should be linked to an (Legal) Entity accepted by GTS participants and within the context of a Policy to be applied.
 * A Trust context for the unique identifier is to be achieved through a cryptographically signed, cryptographically verifiable, and cryptographically revocable credential based on the public keys associated with the unique identifier of the credential issuer.
 
 In the context of this document, a Legal Entity is an individual, organization, or company that has legal rights and obligations.
 
 Note that credentials utilized within one or more GTSs may be self-issued. The acceptance of self-issued credentials is up to the participants within a Policy context that need to rely on the claim(s) within a self-issued credential.
 
-Furthermore, 
+Furthermore,
 * The unique identifier of the (Legal) Entity must be the subject of the credential.
 * The unique identifier of the issuer of the (Legal) Entity credential utilized in the context of a Policy must have a credential linking the unique identifier of the issuer to an (Legal) Entity accepted by the participants within the Policy context.
 * A credential utilized within a Policy Context must follow the W3C Verifiable Credential specification [[W3C VC](https://www.w3.org/TR/vc-data-model/)].
@@ -132,7 +148,7 @@ Note that credential content verification can only be done through the inspectio
 
 ### W3C Verifiable Presentation
 
-A verifiable presentation in the context of this document is used according to the [W3C Verifiable Credential Presentation Description](https://www.w3.org/TR/vc-data-model/#presentations) 
+A verifiable presentation in the context of this document is used according to the [W3C Verifiable Credential Presentation Description](https://www.w3.org/TR/vc-data-model/#presentations)
 > A verifiable presentation expresses data from one or more verifiable credentials, and is packaged in such a way that the authorship of the data is verifiable. If verifiable credentials are presented directly, they become verifiable presentations. Data formats derived from verifiable credentials that are cryptographically verifiable, but do not of themselves contain verifiable credentials, might also be verifiable presentations.
 
 > The data in a presentation is often about the same subject, but might have been issued by multiple issuers. The aggregation of this information typically expresses an aspect of a person, organization, or entity.
@@ -153,7 +169,7 @@ A PWE, therefore, manages and monitors the state of required policy actions and 
 
 ![Figure_1](https://i.imgur.com/TawXtWJ.jpg)
 
-Figure 1: Conceptual view of a general workflow engine. Source: [Yang, Huaizhou & Lv, Bowen & Shi, Wenbo & Sun, Jingxin. (2019). Research and Design of Lightweight Workflow Engine Based on SCA. Journal of Physics: Conference Series. 1237. 052006. 10.1088/1742-6596/1237/5/052006](https://www.researchgate.net/publication/334417867_Research_and_Design_of_Lightweight_Workflow_Engine_Based_on_SCA). 
+Figure 1: Conceptual view of a general workflow engine. Source: [Yang, Huaizhou & Lv, Bowen & Shi, Wenbo & Sun, Jingxin. (2019). Research and Design of Lightweight Workflow Engine Based on SCA. Journal of Physics: Conference Series. 1237. 052006. 10.1088/1742-6596/1237/5/052006](https://www.researchgate.net/publication/334417867_Research_and_Design_of_Lightweight_Workflow_Engine_Based_on_SCA).
 
 PWEs have mainly three functions:
 
@@ -171,11 +187,11 @@ Note that a deterministic state transition in the context of this document is fa
 
 ![Figure_2](https://i.imgur.com/JkXCacH.jpg)
 
-Figure 2: A Conceptual Overview of the relationships between Policy Workflows, Policy Actions and Workgroups managing Policy Actions and Policy Workflows. Source: This document 
+Figure 2: A Conceptual Overview of the relationships between Policy Workflows, Policy Actions and Workgroups managing Policy Actions and Policy Workflows. Source: This document
 
 #### Policy Action
 
-First, this document will discuss the requirements for policy action that will be implemented in the Virtual State Machine of a Policy Workflow Engine. Note that strictly speaking one needs to differentiate between the policy action as a logical construct defined in a document, and its instantiation within a PWE such as a GTS which is called a policy action instance. In the following, and unless required for disambiguation, this document shall use policy action also to mean policy action instance. 
+First, this document will discuss the requirements for policy action that will be implemented in the Virtual State Machine of a Policy Workflow Engine. Note that strictly speaking one needs to differentiate between the policy action as a logical construct defined in a document, and its instantiation within a PWE such as a GTS which is called a policy action instance. In the following, and unless required for disambiguation, this document shall use policy action also to mean policy action instance.
 
 The basic policy action requirements are:
 
@@ -184,10 +200,10 @@ The basic policy action requirements are:
 * The process steps in a policy action must represent a verification system comprised of the set, or subset, of policy rules and policy data such that an input can be validated to comply with the policy rules and policy data, or not.
 * The output of a policy action must represent the validated result of an input into a policy workflow as a correct new policy workflow state.
 
-Note that a new policy workflow state after a correct policy action execution is defined as 
+Note that a new policy workflow state after a correct policy action execution is defined as
 
 ```
-New Policy Workflow State = Old Policy Workflow State + Validated and Accepted New Policy State Object + Policy Action Output 
+New Policy Workflow State = Old Policy Workflow State + Validated and Accepted New Policy State Object + Policy Action Output
 ```
 
 Below we specify, policy action participants, deployment and identification:
@@ -199,7 +215,7 @@ Below we specify, policy action participants, deployment and identification:
 
 This ensures that no breaking changes with potentially significant negative business impact are introduced while a workstep instance is being executed.
 
-Also, a Policy Action must be versioned within a PWE. Furthermore, versions of the same policy action do not have to be compatible with one another. 
+Also, a Policy Action must be versioned within a PWE. Furthermore, versions of the same policy action do not have to be compatible with one another.
 
 Below this document specifies policy action execution:
 * A Policy Action must be executed by a PWE.
@@ -209,7 +225,7 @@ Note, that this allows for delegation of authorization from the authorization be
 
 Furthermore, and very importantly, a policy action must be deterministic. This means that for a given input, there can be only one valid output from the policy action.
 
-Also, the output from a policy action execution must be finalized the indication of acceptance of a policy defined quorum of policy workgroup participants associated with the policy action. This means that the output of a policy action execution must be verified and agreed upon by a previously defined number of the policy action participants. This naturally extends to the input as well. 
+Also, the output from a policy action execution must be finalized the indication of acceptance of a policy defined quorum of policy workgroup participants associated with the policy action. This means that the output of a policy action execution must be verified and agreed upon by a previously defined number of the policy action participants. This naturally extends to the input as well.
 
 
 #### Policy Workflow
@@ -224,7 +240,7 @@ This means that requirements such as determinism, ability to update, versioning,
 
 Furthermore, if there is more than one policy action in a policy workflow, the policy actions in a workflow must be causally connected.
 
-This means that the output of one or more parallel policy actions in a workflow is a required input into a subsequent policy action. 
+This means that the output of one or more parallel policy actions in a workflow is a required input into a subsequent policy action.
 
 Finally, a policy workflow with more than one policy action must have a unique identifier within a PWE. And a policy workflow with more than one policy action and a given set of inputs mut be sequentially executed. This simply means that for a given set of inputs there is only one path through a given policy workflow.
 
@@ -245,7 +261,7 @@ If a PWW has more than one administrator, there must be a policy defined consens
 
 Finally, a PWW may be attached to one or more policy action instances, and a policy workgroup attached to a policy workflow must be also attached to each policy action in the policy workflow.
 
-Every participant within a Policy Workflow Workgroup must have an associated Hedera Consensus Service Topic to log the activities performed such as policy configuration, interaction with Policy Workflow Actions, authorizations, etc. 
+Every participant within a Policy Workflow Workgroup must have an associated Hedera Consensus Service Topic to log the activities performed such as policy configuration, interaction with Policy Workflow Actions, authorizations, etc.
 
 #### Policy Workflow State Objects
 This document has been defining and discussing policy workflow state objects (PWSOs) in the context of a PWE, hence, it needs to define stateful object processing. This necessitates a state or account-based model for policy workflow state objects. This is analogous to the Ethereum model using accounts and state object for smart contracts.
@@ -277,7 +293,7 @@ To summarize, the state of a PWSO must be minimally comprised of the following e
 * State Object representation
 * State object storage (location)
 
-The state of a PWSO must only be changed based on a valid policy action request initiated by an authorized owner. 
+The state of a PWSO must only be changed based on a valid policy action request initiated by an authorized owner.
 
 This document will discuss the requirements of a policy action request (PAR) and what constitutes a valid PAR in the next section. Note, that PWSO may be associated with the state of a policy action instance.
 
@@ -286,17 +302,17 @@ This document will discuss the requirements of a policy action request (PAR) and
 PWSO are altered through PARs submitted by requesters, see also Figure 1. In the following, this document specifies requirements for the structure and characteristics of PARs.
 
 For identification, each PAR must have minimally the following identifiers:
-* Policy Workflow Instance ID (UID) 
+* Policy Workflow Instance ID (UID)
 * Policy Action Instance ID (UID)
 * PAR ID (UID)
 
-Note that the Policy Workflow ID may be the same as Policy Action ID if the workflow has only one Policy Action. 
+Note that the Policy Workflow ID may be the same as Policy Action ID if the workflow has only one Policy Action.
 
 The minimal PAR requirements are as follows:
 * Each PAR ID should be generated by the PAR originator/sender.
 * Each PAR must have a `From` (Sender) and a `To` (Receiver) element each containing the respective Sender and Receiver identifiers.
 * Each PAR must have a deterministic nonce.
-* Each PAR must contain a representation of the PWSO constituting the suggested new policy workflow state, such that it can be validated by the PWSO owners. 
+* Each PAR must contain a representation of the PWSO constituting the suggested new policy workflow state, such that it can be validated by the PWSO owners.
 * Each PAR must contain the cryptographic digital signature of the Sender.
 
 A PAR must be considered invalid if one of the following conditions is met:
@@ -310,16 +326,16 @@ Note, that this is only a minimal set of requirements on an invalid PAR. Each PW
 
 In the following, this document will discuss the requirements on the Policy State Machine calculating the state transition of a PWSO based on a PAR and the relevant Policy Action instance.
 
-Since PWEs are used to verify the correctness of state transitions, they will utilize a Policy State Machine (PSM) for its computations to validate state transitions of PWSOs; a digital computer running on a physical computer. A PSM requires an architecture and execution rules which together define the Execution Framework. 
+Since PWEs are used to verify the correctness of state transitions, they will utilize a Policy State Machine (PSM) for its computations to validate state transitions of PWSOs; a digital computer running on a physical computer. A PSM requires an architecture and execution rules which together define the Execution Framework.
 
 The minimal requirements for an execution framework are:
 * The Execution Framework of a VSM MUST be deterministic. Note, any PWE running the same Execution Framework on the same PWSO with the same input data needs to arrive at the same result, in other words, deterministic outcomes. This is only guaranteed if the Execution Framework either does not allow instructions to be executed in parallel, but only strictly sequential, or if the Execution Framework has methods in place that allow the identification and prevention of transactions that would cause state conflicts if processed in parallel. For example, a Requester proposes PAR A which is created at time t, and the Receiver, has just agreed to another PAR, PAR B, acting on the same PWSO at time t-1 but not yet processed. This means that if PAR A is processed in parallel to PAR B the wrong PWSO would be creates depending on which PAR is executed first.
-* The Execution Framework of a PSM must ensure that state transition validation computations are either completed or abort in finite time, where what is deemed to be a suitable finite time is determined by the allowable duration of a PAR. This requirement means that infinite computational loops cannot be allowed in a PWE. 
+* The Execution Framework of a PSM must ensure that state transition validation computations are either completed or abort in finite time, where what is deemed to be a suitable finite time is determined by the allowable duration of a PAR. This requirement means that infinite computational loops cannot be allowed in a PWE.
 * If a PSM can generate a valid state transition based on a PAR, it must update the state of the PWSO and the state history of the PWSO.
 * If a PSM can generate a valid state transition and the targeted state object is not the state object of the complete policy workflow state, it must update the PWSO of the policy workflow and its state history besides the PWSO and its history targeted by the PAR.
 * A PSM MUST store all PWSOs, their associated data, and their histories in the PWE.
 * The integrity of PARs, PWSOs, and their data and histories must be cryptographically verifiable by the owners associated with the PARs, PWSOs, and their data and history.
-* All updates to a policy workflow state and its associated PWSOs by a PSM must be communicated to all policy workflow participants based on the relevant privacy policies. 
+* All updates to a policy workflow state and its associated PWSOs by a PSM must be communicated to all policy workflow participants based on the relevant privacy policies.
 
 The following requirements are addressing the operating scenario where a PWE consists of more than one node, such as a Guardian Network. This is a perfectly feasible scenario with its pros and cons beyond the scope of this document to discuss. However, certain requirements need to be met for such a scenario to be operationally viable:
 * A PWE may consist of more than one processing node. This document will call such a structure a PWE network.
@@ -329,7 +345,7 @@ The following requirements are addressing the operating scenario where a PWE con
 
 Finally, PARs, and PWSO data and their histories must be stored as partially persistent data.
 
-Each Policy Workflow Transaction is sent to Hedera Consensus Service Topics for the purposes for immutability and public auditability. The data contained within the Policy Workflow Transactions can be used to mint tokens using Hedera Token Service, create verifiable crendentials, create verifiable presentations, etc. 
+Each Policy Workflow Transaction is sent to Hedera Consensus Service Topics for the purposes for immutability and public auditability. The data contained within the Policy Workflow Transactions can be used to mint tokens using Hedera Token Service, create verifiable crendentials, create verifiable presentations, etc.
 
 #### Policy Workflow and Policy Action Execution Framework
 
