@@ -48,7 +48,27 @@ This is where a Guardian type solution that leverages a PWE, is a sensible appro
 * Decentralized ledger technologies.
 * Policy workflow engines through fully configurable and human readable “logic blocks” accessible through either a user interface or an application programming interface (API). 
 
-Like mentioned at the beginning of this section, similar logic can be easily applied to other rationales. 
+Organizations like DOVU, who is building a soil carbon sequestration application, believe offset projects should include incentivization structures by default including a layer of accountability so that the carbon capture abilities are optimized. If correct processes in agricultural for DOVU's use case aren't followed this can trigger a negative effect of carbon stores.
+
+Furthermore, as soil has an estimated maximum storage capacity for carbon capacity through [regenerative agriculture](https://en.wikipedia.org/wiki/Regenerative_agriculture) however there should be an ongoing maintaince period, tied to incentives, which extends beyond the scope of a contract to ensure that soil carbon isn't depleted and trigger durability issues outside a contract.
+
+To avoid the negative effects there are a number of elements that are required:
+
+- A project owner that has been created and is linked to a new Ecological Project (EP).
+- A link between HTS (to issue tokenized carbon offsets) and HCS (to log the evidence supporting the issuance of tokenized carbon offsets), a common format.
+- A genesis message that would reference the initial asset in terms of a Core Carbon Principals (CCP) token.
+- State changes of the CCP representation, with versions and updates including additionally and leakage.
+- Continued messages, with a common schema that can be used as a mechanism to upload evidence.
+- This work will continue to evolve and adjust over time.
+
+These elements listed above would require a dynamic Policy Workflow Engine.
+
+Listed above is just one rationale, however, a similar workflow will be required to fulfill various use cases / polices.
+
+* Decentralized ledger technologies.
+* Policy workflow engines through fully configurable and human readable “logic blocks” accessible through either a user interface or an application programming interface (API).
+
+Like mentioned at the beginning of this section, similar logic can be easily applied to other rationales.
 
 ## User stories
 
@@ -482,6 +502,8 @@ No issues.
 ## Security Implications
 
 Permissions are defined in Policy Workflow Workgroups.
+
+Self-hosted Guardians have a risk of the fraudulent generation of carbon credits where the hostee has a financial incentive to sell carbon by programmatically generating multiple accounts and creating adhoc verifiable credentials. Applications that utilise the Guardian need to have additional processes for KYC and verification of trusted entities.
 
 ## How to Teach This
 
