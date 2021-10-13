@@ -42,6 +42,8 @@ This is where a Guardian type solution that leverages a PWE, is a sensible appro
 
 Organizations like DOVU, who is building a soil carbon sequestration application, believe offset projects should include incentivization structures by default including a layer of accountability so that the carbon capture abilities are optimized. If correct processes in agricultural for DOVU's use case aren't followed this can trigger a negative effect of carbon stores. 
 
+Furthermore, as soil has an estimated maximum storage capacity for carbon capacity through [regenerative agriculture](https://en.wikipedia.org/wiki/Regenerative_agriculture) however there should be an ongoing maintaince period, tied to incentives, which extends beyond the scope of a contract to ensure that soil carbon isn't depleted and trigger durability issues outside a contract.       
+
 To avoid the negative effects there are a number of elements that are required:
 
 - A project owner that has been created and is linked to a new Ecological Project (EP).
@@ -487,6 +489,8 @@ No issues.
 ## Security Implications
 
 Permissions are defined in Policy Workflow Workgroups.
+
+Self-hosted Guardians have a risk of the fraudulent generation of carbon credits where the hostee has a financial incentive to sell carbon by programmatically generating multiple accounts and creating adhoc verifiable credentials. Applications that utilise the Guardian need to have additional processes for KYC and verification of trusted entities.
 
 ## How to Teach This
 
